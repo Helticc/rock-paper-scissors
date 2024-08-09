@@ -55,3 +55,41 @@
     left: 500px;
     overflow: hidden;
 }
+
+.container-pc {
+    position: absolute;
+    border: 2px solid black;
+    width: 600px;
+    height: 596px;
+    top: 200px;
+    left: 1200px;
+    overflow: hidden;
+}
+
+.Score-Info {
+    position: absolute;
+    font-size: 40px;
+    top: 150px;
+    left: 500px;
+}
+
+.Score-Info-Computer {
+    position: absolute;
+    font-size: 40px;
+    top: 150px;
+    left: 1200px;
+}
+
+.Score-Player {
+    position: absolute;
+    font-size: 40px;
+    top: 150px;
+    left: 720px;
+}
+
+.Score-Computer {
+    position: absolute;
+    font-size: 40px;
+    top: 150px;
+    left: 1480px;
+}
