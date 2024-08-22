@@ -16,6 +16,12 @@ btnPaper.className = "paperBtn";
 const btnScissor = document.createElement('button');
 btnScissor.className = "scissorBtn";
 
+//-----losing/winning-screen-----//
+const win = document.createElement('div');
+win.className = "win";
+const lost = document.createElement('div');
+lost.className = "lost";
+
 //-----score-information-----//
 
 let score = 0;
@@ -30,25 +36,12 @@ scoreComputer.className = "Score-Computer";
 const scorePlayerText = document.createElement('div');
 scorePlayerText.className = "Score-Info";
 
+scorePlayerText.innerHTML = `Player score: ${score}`;
+
 const scoreComputerText = document.createElement('div');
 scoreComputerText.className = "Score-Info-Computer";
 
-const pointsPlayer = document.createElement('div');
-pointsPlayer.className = "points";
-
-scorePlayerText.innerHTML = `Player score: ${score}`;
-
-const pointsComputer = document.createElement('div');
-pointsComputer.className = "points";
-
 scoreComputerText.innerHTML = `Computer score: ${scoreCom}`;
-
-//-----win-lose-----//
-
-const win = document.createElement('div');
-win.className = "winScreen";
-const lose = document.createElement('div');
-lose.className = "loseScreen";
 
 //-----container-box-----//
 
@@ -74,15 +67,8 @@ comPaper.style.width = "100%";
 comScissor.src = "scissor.png";
 comScissor.style.width = "100%";
 
-win.style.fontSize = "20px";
-lose.style.fontSize = "20px";
-
 //------body-tags------//
 
-body.appendChild(win);
-body.appendChild(lose);
-body.appendChild(pointsPlayer);
-body.appendChild(pointsComputer);
 body.appendChild(scorePlayer);
 body.appendChild(scoreComputer);
 body.appendChild(scorePlayerText);
@@ -106,19 +92,19 @@ function buttonRock() {
         computerPlay.src = comPaper.src;
         scoreCom++;
         scoreComputerText.innerHTML = `Computer score: ${scoreCom}`;
-        if(scoreCom == 3) {
-            lose.innerHTML = "You Lost:(";
-        }
+        body.appendChild(lost);
     }else {
         console.log('win');
         computerPlay.src = comScissor.src;
         score++;
         scorePlayerText.innerHTML = `Player score: ${score}`;
-        if(score == 3) {
-            win
-        }
+        body.appendChild(win);
     }
+
+
 }
+
+btnRock.onclick = buttonRock;
 
 function buttonPaper() {
     player.src = paper.src;
@@ -130,6 +116,9 @@ function buttonPaper() {
         computerPlay.src = comRock.src;
         score++;
         scorePlayerText.innerHTML = `Player score: ${score}`;
+        if(score == 3) {
+            body.innerHTML = "YOU WIN!!!";
+        }
     }else if(randomNum == 2) {
         console.log('tie');
         computerPlay.src = comPaper.src;
@@ -138,8 +127,12 @@ function buttonPaper() {
         computerPlay.src = comScissor.src;
         scoreCom++;
         scoreComputerText.innerHTML = `Computer score: ${scoreCom}`;
+        if(scoreCom == 3) {
+        }
     }
 }
+
+btnPaper.onclick = buttonPaper;
 
 function buttonScissor() {
     player.src = scissor.src;
@@ -162,6 +155,49 @@ function buttonScissor() {
     }
 }
 
-btnRock.onclick = buttonRock;
-btnPaper.onclick = buttonPaper;
 btnScissor.onclick = buttonScissor;
+
+//--------------------//
+
+// const body = document.getElementsByTagName('body')[0];
+// const paper = document.createElement('img');
+// const rock = document.createElement('img');
+// const scissor = document.createElement('img');
+
+
+// const box = document.createElement('div');
+// box.style.height = "300px";
+// box.style.width = "300px";
+// box.style.overflow = "hidden";
+// body.appendChild(box);
+
+// const button = document.createElement('button');
+// button.innerHTML = "START";
+// button.style.position = "absolute";
+// button.style.top = "350px";
+// button.style.left = "350px";
+// body.appendChild(button);
+
+// paper.src = 'paper.png';
+// paper.style.height = "300px";
+// paper.style.width = "300px";
+// rock.src = 'rock.png';
+// rock.style.height = "300px";
+// rock.style.width = "300px";
+// scissor.src = 'scissor.png';
+// scissor.style.height = "300px";
+// scissor.style.width = "300px";
+
+// function RPS() {
+//     const randomNum = Math.ceil(Math.random() * 3);
+
+//     if(randomNum === 1) {
+//         box.appendChild(paper);
+//     }else if(randomNum === 2) {
+//         box.appendChild(rock);
+//     }else if(randomNum === 3) {
+//         box.appendChild(scissor);
+//     }
+// }
+
+// button.onclick = RPS;
